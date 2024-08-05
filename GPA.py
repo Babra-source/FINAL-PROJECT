@@ -241,11 +241,11 @@ def process():
         st.write("Feature Impact Analysis:")
         for feature, impact in zip(input_data.columns, shap_values.values[0]):
             if impact > 0:
-                st.markdown(f"<div style='color:green;'>The feature '{feature}' positively impacts the score by {impact:.2f}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='color:green;'>Your input for  '{feature}' positively impacts the score by {impact:.2f}</div>", unsafe_allow_html=True)
             elif impact < 0:
-                st.markdown(f"<div style='color:red;'>The feature '{feature}' negatively impacts the score by {impact:.2f}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='color:red;'>Your input for '{feature}' negatively impacts the score by {impact:.2f}</div>", unsafe_allow_html=True)
             else:
-                st.markdown(f"<div style='color:gray;'>The feature '{feature}' has no impact on the score.</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='color:gray;'>Your input for  '{feature}' has no impact on the score.</div>", unsafe_allow_html=True)
         fig, ax = plt.subplots(figsize=(10, 6))
         feature_names = input_data.columns
         shap_values_means = shap_values.abs.mean(axis=0).values
